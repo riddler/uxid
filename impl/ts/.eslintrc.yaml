@@ -1,0 +1,14 @@
+env:
+  jest/globals: true
+extends:
+  - standard
+  - eslint:recommended
+  - plugin:jest/recommended
+plugins:
+  - jest
+rules:
+  arrow-parens:
+    - error
+    - always
+  prefer-promise-reject-errors:
+    - warn
