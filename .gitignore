@@ -41,29 +41,66 @@ Thumbs.db
 # Editor-made files
 *.swp
 
+#===== Ruby =====
+*.gem
 
 #===== Node/NPM/TypeScript =====
 .cache
+dist/
 
 # The directory NPM downloads your dependencies sources to.
 node_modules/
 
+#===== Python =====
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
 #===== Elixir =====
 
 # The directory Mix will write compiled artifacts to.
-*/_build/
+_build/
 
 # If you run "mix test --cover", coverage assets end up here.
-*/cover/
+cover/
 
 # The directory Mix downloads your dependencies sources to.
-*/deps/
+deps/
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
-*/doc/
+doc/
 
 # Ignore .fetch files in case you like to edit your project deps locally.
-*/.fetch
+.fetch
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
@@ -78,7 +115,7 @@ npm-debug.log
 # Since we are building assets from assets/,
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
-*/priv/static/
+priv/static/
 
 # Files matching config/*.secret.exs pattern contain sensitive
 # data and you should not commit them into version control.
@@ -86,4 +123,4 @@ npm-debug.log
 # Alternatively, you may comment the line below and commit the
 # secrets files as long as you replace their contents by environment
 # variables.
-*/config/*.secret.exs
+config/*.secret.exs
