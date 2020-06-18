@@ -89,7 +89,7 @@ class UploadCommand(Command):
         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
         self.status('Uploading the package to PyPI via Twine…')
-        os.system('twine upload --repository testpypi dist/*')
+        os.system('twine upload dist/*')
 
         # self.status('Pushing git tags…')
         # os.system('git tag v{0}'.format(about['__version__']))
