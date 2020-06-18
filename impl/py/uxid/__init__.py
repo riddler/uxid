@@ -7,7 +7,10 @@
     :copyright: (c) 2020 JohnnyT.
     :license: MIT, see LICENSE for more details
 """
+from . import api, uxid
 
+decode = api.decode
 
-def new():
-    return "uxid"
+UXID = uxid.UXID
+
+__all__ = api.__all__ + uxid.__all__
