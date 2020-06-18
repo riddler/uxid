@@ -1,0 +1,24 @@
+:description: >
+  Decoding valid and invalid input strings.
+  This spec is a great introduction to UXIDs.
+  The structure is defined and visible without needing to know how it is generated.
+  Implementors should start here.
+
+:decoder_tests:
+  - :name: accepts a ULID
+    :input: 01E9VB3RWNAR89HSKMS84K9HCS
+    :verify:
+      :time: 1591129269141
+
+  - :name: accepts the maximum allowed timestamp
+    :input: 7ZZZZZZZZZZZZZZZZZZZZZZZZZ
+    :verify:
+      :time: 281474976710655
+
+  - :name: rejects malformed strings
+    :input: this is not a UXID
+    :error_message: "expected input to be a Base32 encoded string, got: 'this is not a UXID'"
+
+  # - :name: rejects times past maximum allowed timestamp
+  #   :input: 80000000000000000000000000
+  #   :error_message: "the time cannot be greater than 2^48, got: 281474976710656"
