@@ -1,8 +1,5 @@
 # Custom files
 
-# Generated Spec files
-spec/generated
-
 # Compiled source
 *.com
 *.class
@@ -46,6 +43,7 @@ generated
 
 #===== Ruby =====
 *.gem
+reports/
 
 #===== Node/NPM/TypeScript =====
 .cache

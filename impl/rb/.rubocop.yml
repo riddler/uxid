@@ -1,0 +1,103 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  DisabledByDefault: true
+  Exclude:
+    - pkg/**/*.rb
+    - test/spec/**/*.rb
+
+Bundler/DuplicatedGem:
+  Enabled: true
+Lint:
+  Enabled: true
+Security:
+  Enabled: true
+
+# Single quotes being faster is hardly measurable and only affects parse time.
+# Enforcing double quotes reduces the times where you need to change them
+# when introducing an interpolation. Use single quotes only if their semantics
+# are needed.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  Exclude:
+    - lib/riddler/protobuf/*_pb.rb
+
+# Seattle style
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+
+# Seattle style
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: true
+
+# Seattle style
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  EnforcedStyle: omit_parentheses
+  AllowParenthesesInChaining: true
+  IgnoredMethods:
+    - watch
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Style/Lambda:
+  Enabled: true
+  EnforcedStyle: literal
+
+# Allow regex argument in Seattle style
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# Allow block argument in Seattle style
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyleForEmptyBraces: no_space
+  EnforcedStyle: no_space
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/CaseIndentation:
+  Enabled: true
+  EnforcedStyle: end
+
+Layout/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: variable
+
+Layout/SpaceAroundBlockParameters:
+  Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+  Exclude:
+    - lib/riddler/protobuf/*_pb.rb
+
+Metrics/ClassLength:
+  Enabled: true
+  Max: 200
+  Exclude:
+    - test/**/*.rb
+
+Lint/SuppressedException:
+  Exclude:
+    - lib/tasks/**/*.rake
+
+Lint/Debugger:
+  Exclude:
+    - test/**/*
