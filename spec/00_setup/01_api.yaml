@@ -1,0 +1,19 @@
+:description: >
+  Ensure the implementation is setup and that the generated tests will work.
+  Makes sure the correct API is in place.
+
+:api_tests:
+  - :name: UXID decode exists
+    :method: decode
+    :args:
+      - 01E9VB3RWNAR89HSKMS84K9HCS
+
+:decoder_tests:
+  - :name: returns a UXID with input
+    :input: 01E9VB3RWNAR89HSKMS84K9HCS
+    :verify:
+      :encoded: 01E9VB3RWNAR89HSKMS84K9HCS
+
+  - :name: rejects blank strings
+    :input:
+    :error_message: "input is required"
