@@ -1,12 +1,14 @@
 {
   "name": "uxid",
   "version": "0.0.1",
-  "description": "Safe predicate engine",
-  "main": "dist/uxid.js",
+  "description": "User eXperience focused IDentifiers",
+  "main": "./dist/uxid.js",
+  "types": "./dist/uxid.d.js",
   "scripts": {
-    "build": "parcel build src/uxid.js",
-    "lint": "eslint .",
-    "prepublish": "yarn test && yarn build",
+    "build": "tsc",
+    "format:check": "prettier --check '{src,test}/**/*.{js,ts}'",
+    "format": "prettier --write '{src,test}/**/*.{js,ts}'",
+    "lint": "eslint '*/**/*.{js,ts,ts}' --quiet --fix",
     "test": "jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
@@ -18,10 +20,12 @@
   },
   "files": [
     "dist/uxid.js",
+    "dist/uxid.d.js",
+    "CHANGELOG.md",
     "LICENSE.txt",
     "README.md"
   ],
-  "author": "JohnnyT",
+  "author": "JohnnyT <ubergeek3141@gmail.com>",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -31,35 +35,21 @@
   },
   "homepage": "https://github.com/riddler/uxid#readme",
   "jest": {
-    "watchPlugins": [
-      "jest-runner-eslint/watch-fix"
-    ],
-    "projects": [
-      {
-        "displayName": "test"
-      },
-      {
-        "displayName": "lint",
-        "runner": "jest-runner-eslint",
-        "testMatch": [
-          "<rootDir>/src/**/*.js"
-        ]
-      }
-    ]
+    "preset": "ts-jest"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-jest": "^22.6.4",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.8.0",
-    "jest-runner-eslint": "^0.7.3",
-    "liquidjs": "^8.2.3",
-    "parcel-bundler": "^1.12.3",
-    "yaml": "^1.6.0"
+    "@types/jest": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
+    "@typescript-eslint/parser": "^3.1.0",
+    "eslint": "^6",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^26.0.1",
+    "jest-runner-eslint": "^0.9.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
   }
 }

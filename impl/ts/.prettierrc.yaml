@@ -1,0 +1,5 @@
+semi: true
+trailingComma: all
+# Use double-quotes - same as other languages used in this repo
+singleQuote: false
+printWidth: 100
