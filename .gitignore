@@ -41,6 +41,9 @@ Thumbs.db
 # Editor-made files
 *.swp
 
+#===== Spec Generator =====
+generated
+
 #===== Ruby =====
 *.gem
 
