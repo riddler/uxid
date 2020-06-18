@@ -1,10 +1,12 @@
 """
     uxid
     ~~~~
-    User Experience focused Identifier
-"""
 
-__all__ = ["new"]
+    User Experience focused Identifier
+
+    :copyright: (c) 2020 JohnnyT.
+    :license: MIT, see LICENSE for more details
+"""
 
 
 def new():
