@@ -14,11 +14,11 @@ class UXID0101Test < Minitest::Test
 
 
   # accepts a ULID
-  def test_0101_basic_decoding_decoder
+  def test_accepts_a_ulid
     input_string = "01E9VB3RWNAR89HSKMS84K9HCS"
 
     uxid = UXID.decode input_string
-    assert_kind_of ::UXID, uxid
+    assert_kind_of ::UXID::Model, uxid
 
     assert_equal 1591129269141, uxid.time
 
@@ -26,11 +26,11 @@ class UXID0101Test < Minitest::Test
 
 
   # accepts the maximum allowed timestamp
-  def test_0101_basic_decoding_decoder
+  def test_accepts_the_maximum_allowed_timestamp
     input_string = "7ZZZZZZZZZZZZZZZZZZZZZZZZZ"
 
     uxid = UXID.decode input_string
-    assert_kind_of ::UXID, uxid
+    assert_kind_of ::UXID::Model, uxid
 
     assert_equal 281474976710655, uxid.time
 
@@ -38,7 +38,7 @@ class UXID0101Test < Minitest::Test
 
 
   # rejects malformed strings
-  def test_0101_basic_decoding_decoder
+  def test_rejects_malformed_strings
     input_string = "this is not a UXID"
 
     error = assert_raises { UXID.decode input_string }
