@@ -10,7 +10,7 @@ import uxid
 
 
 
-def test_0001_setup_api_api():
+def test_uxid_decode_exists():
     """
     UXID decode exists
     """
@@ -21,7 +21,7 @@ def test_0001_setup_api_api():
 
 
 
-def test_0001_setup_api_decoder():
+def test_returns_a_uxid_with_input():
     """
     returns a UXID with input
     """
@@ -33,7 +33,7 @@ def test_0001_setup_api_decoder():
 
 
 
-def test_0001_setup_api_decoder():
+def test_rejects_blank_strings():
     """
     rejects blank strings
     """
