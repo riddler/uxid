@@ -20,11 +20,11 @@ class UXID0001Test < Minitest::Test
 
 
   # returns a UXID with input
-  def test_0001_setup_api_decoder
+  def test_returns_a_uxid_with_input
     input_string = "01E9VB3RWNAR89HSKMS84K9HCS"
 
     uxid = UXID.decode input_string
-    assert_kind_of ::UXID, uxid
+    assert_kind_of ::UXID::Model, uxid
     assert_equal "01E9VB3RWNAR89HSKMS84K9HCS", uxid.encoded
 
 
@@ -32,7 +32,7 @@ class UXID0001Test < Minitest::Test
 
 
   # rejects blank strings
-  def test_0001_setup_api_decoder
+  def test_rejects_blank_strings
     input_string = ""
 
     error = assert_raises { UXID.decode input_string }

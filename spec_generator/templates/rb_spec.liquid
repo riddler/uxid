@@ -19,14 +19,14 @@ class UXID{{ group_id }}{{ spec_id }}Test < Minitest::Test
 {% if decoder_tests %}
 {% for test in decoder_tests %}
   # {{ test.name }}
-  def test_{{ group_id }}{{ spec_id }}_{{ group_name }}_{{ spec_name }}_decoder
+  def test_{{ test.name | downcase | replace: " ", "_" }}
     input_string = "{{ test.input }}"
 {% if test.error_message %}
     error = assert_raises { UXID.decode input_string }
     assert_equal "{{ test.error_message }}", error.message
 {% elsif test.verify %}
     uxid = UXID.decode input_string
-    assert_kind_of ::UXID, uxid
+    assert_kind_of ::UXID::Model, uxid
 {% if test.verify.encoded %}    assert_equal "{{ test.verify.encoded }}", uxid.encoded{% endif %}
 {% if test.verify.time %}    assert_equal {{ test.verify.time }}, uxid.time{% endif %}
 {% else %}

@@ -1,9 +1,12 @@
+require "uxid/model"
 require "uxid/version"
 
-CROCKFORD_ENCODING = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-INVALID_REGEX = /[^#{CROCKFORD_ENCODING}]/
-
 module UXID
+  CROCKFORD_ENCODING = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
+  INVALID_REGEX = /[^#{CROCKFORD_ENCODING}]/
+  TIME_MAX = 2.pow(48) - 1
+  TIME_LEN = 10
+
   class Error < StandardError; end
   
   def self.decode value
@@ -14,8 +17,11 @@ module UXID
 
       elsif value =~ INVALID_REGEX
         raise "expected input to be a Base32 encoded string, got: '#{value}'"
+      else
+        UXID::Model.new value
       end
+    else
+      nil
     end
-    "uxid"
   end
 end
