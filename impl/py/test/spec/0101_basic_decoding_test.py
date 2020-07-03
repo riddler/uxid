@@ -13,7 +13,7 @@ import uxid
 
 
 
-def test_0101_basic_decoding_decoder():
+def test_accepts_a_ulid():
     """
     accepts a ULID
     """
@@ -25,7 +25,7 @@ def test_0101_basic_decoding_decoder():
     assert decoded_id.time == 1591129269141
 
 
-def test_0101_basic_decoding_decoder():
+def test_accepts_the_maximum_allowed_timestamp():
     """
     accepts the maximum allowed timestamp
     """
@@ -37,7 +37,7 @@ def test_0101_basic_decoding_decoder():
     assert decoded_id.time == 281474976710655
 
 
-def test_0101_basic_decoding_decoder():
+def test_rejects_malformed_strings():
     """
     rejects malformed strings
     """

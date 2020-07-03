@@ -10,7 +10,7 @@ import uxid
 {% if api_tests %}
 {% for test in api_tests %}
 {% capture args_string %}{% for arg in test.args %}"{{ arg }}"{% endfor %}{% endcapture %}
-def test_{{ group_id }}{{ spec_id }}_{{ group_name }}_{{ spec_name }}_api():
+def test_{{ test.name | downcase | replace: " ", "_" }}():
     """
     {{ test.name }}
     """
@@ -21,7 +21,7 @@ def test_{{ group_id }}{{ spec_id }}_{{ group_name }}_{{ spec_name }}_api():
 
 {% if decoder_tests %}
 {% for test in decoder_tests %}
-def test_{{ group_id }}{{ spec_id }}_{{ group_name }}_{{ spec_name }}_decoder():
+def test_{{ test.name | downcase | replace: " ", "_" }}():
     """
     {{ test.name }}
     """
