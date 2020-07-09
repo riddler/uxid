@@ -99,6 +99,10 @@ defmodule SpecGenerator do
           spec_id: spec_id
         }) do
       case language do
+        "go" ->
+          Enum.join(["uxid_spec", "#{group_id}#{spec_id}", group_name, spec_name, "test"], "_") <>
+            ".#{extension(language)}"
+
         "ts" ->
           Enum.join(["#{group_id}#{spec_id}", group_name, spec_name], "-") <>
             ".test.#{extension(language)}"
@@ -116,6 +120,10 @@ defmodule SpecGenerator do
         "ex" -> "exs"
         lang -> lang
       end
+    end
+
+    def impl_path(%__MODULE__{language: "go" = language} = spec) do
+      Path.join(["../impl", language, filename(spec)])
     end
 
     def impl_path(%__MODULE__{language: language} = spec) do

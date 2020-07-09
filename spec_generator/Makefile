@@ -23,13 +23,16 @@ help: ## Displays help message describing each task
 # Don't look for this on the filesystem
 .PHONY: help
 
-generate: generated/.ex generated/.py generated/.rb generated/.ts ## Generate all specs
+generate: generated/.ex generated/.go generated/.py generated/.rb generated/.ts ## Generate all specs
 > @echo "Done!"
 # Don't look for this on the filesystem 
 .PHONY: generate
 
 generated/.ex: generated/
 > @mix run generate.exs ex $@
+
+generated/.go: generated/
+> @mix run generate.exs go $@
 
 generated/.py: generated/
 > @mix run generate.exs py $@
