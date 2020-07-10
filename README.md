@@ -118,8 +118,12 @@
 <!-- ALTERNATIVES -->
 ## Alternatives
 
-  * [ULID][ulid_url] Universally Unique Lexicographically Sortable Identifier.
-
+  * [Auth0 id-generator][auth0_id_generator_url]: Generates random ids with a prefix (a la Stripe).
+  * [CID][cid_url]: Content ID - a human-friendly unique ID function built for use with mobile-first/distributed apps.
+  * [GlobalID][global_id_url]: Reference models by URI - an app wide URI that uniquely identifies a model instance.
+  * [KUSID][ksuid_url]: K-Sortable Unique IDentifier.
+  * [ULID][ulid_url]: Universally Unique Lexicographically Sortable Identifier.
+  * [XID][xid_url]: Globally Unique ID Generator based on the Mongo Object ID algorithm.
 
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -140,7 +144,12 @@
 
 [contribution_guidelines]: https://github.com/riddler/.github/blob/master/CONTRIBUTING.md
 
+[auth0_id_generator_url]: https://github.com/auth0/id-generator
+[cid_url]: https://github.com/dwyl/cid
+[global_id_url]: https://github.com/rails/globalid
+[ksuid_url]: https://github.com/segmentio/ksuid
 [ulid_url]: https://github.com/ulid/spec
+[xid_url]: https://github.com/rs/xid
 
 [top_ten_reasons_url]: https://changelog.com/posts/top-ten-reasons-why-i-wont-use-your-open-source-project
 [readme_template_url]: https://github.com/othneildrew/Best-README-Template
