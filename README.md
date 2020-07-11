@@ -10,22 +10,45 @@
 *** for the actual URLs.
 *** See: https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Issues][issues_shield]][issues_url]
-[![MIT License][license_shield]][license_url]
+# UXID [![Issues][issues_shield]][issues_url] [![MIT License][license_shield]][license_url]
+
+This project contains the specification and reference implementations of a type of unique identifier called a UXID.
+
+UXID stands for **U**ser e**X**perience focused **ID**entifier and is similar to a [ULID][ulid_url], with a strong focus on UX.
+
+## Why UXIDs?
+
+ID generation is a fun topic (for some :) and there are many existing libraries to do so (see [Alternatives]).
+UXIDs build on strong concepts from some of these alternatives and have these primary goals:
+
+  * User experience focused
+  * No coordination, no collisions, no (fixed) cardinality
+  * Sortable by time
+
+### User Experience Focused
+
+Most ID generation libraries focus on creating unique identifiers to work for the system (often distributed) and give little thought to the humans who use them.
+
+Who are these humans you speak of? There are two large groups:
+
+* The customer and tech support heros who need to easily pronounce and hear them over the phone.
+* The engineers investigating a complex issue with multiple objects of different types.
+
 
 <!-- PROJECT LOGO -->
+<!--
 <br />
 <p align="center">
   <h1 align="center">UXID</h1>
 
   <p align="center">
-    User Experience focused Identifiers
+    <b>U</b>ser e<b>X</b>perience focused <b>ID</b>entifiers
     <br />
     <br />
     <a href="https://github.com/riddler/uxid/issues">Report Bug / Request Feature</a>
   </p>
 </p>
-
+-->
 
 
 <!-- TABLE OF CONTENTS -->
