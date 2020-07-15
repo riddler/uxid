@@ -19,6 +19,7 @@ UXID stands for **U**ser e**X**perience focused **ID**entifier and is similar to
 ## Why UXIDs?
 
 ID generation is a fun topic (for some :) and there are many existing libraries to do so (see [Alternatives]).
+ID generation is a fun topic (for some :) and there are many existing libraries to do so (see [Alternatives](#alternatives)).
 UXIDs build on strong concepts from some of these alternatives and have these primary goals:
 
   * User experience focused
