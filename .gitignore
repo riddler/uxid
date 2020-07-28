@@ -41,6 +41,9 @@ Thumbs.db
 #===== Spec Generator =====
 generated
 
+#===== Rust =====
+target/
+
 #===== Ruby =====
 *.gem
 reports/
