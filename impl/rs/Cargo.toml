@@ -1,0 +1,13 @@
+[package]
+name = "uxid"
+version = "0.0.1"
+description = "User eXperience based IDentifiers"
+authors = ["JohnnyT <ubergeek3141@gmail.com>"]
+repository = "https://github.com/riddler/uxid"
+license = "MIT"
+readme = "../../README.md"
+edition = "2018"
+
+keywords = ["uxid"]
+
+[dependencies]
