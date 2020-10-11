@@ -54,27 +54,27 @@ node_modules/
 
 #===== Python =====
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+impl/py/**/__pycache__/
+impl/py/**/*.py[cod]
+impl/py/**/*$py.class
 
 # Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+impl/py/**/.Python
+impl/py/**/env/
+impl/py/**/build/
+impl/py/**/develop-eggs/
+impl/py/**/dist/
+impl/py/**/downloads/
+impl/py/**/eggs/
+impl/py/**/.eggs/
+impl/py/**/lib/
+impl/py/**/lib64/
+impl/py/**/parts/
+impl/py/**/sdist/
+impl/py/**/var/
+impl/py/**/*.egg-info/
+impl/py/**/.installed.cfg
+impl/py/**/*.egg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -98,10 +98,10 @@ cover/
 deps/
 
 # Where 3rd-party dependencies like ExDoc output generated docs.
-doc/
+impl/ex/**/doc/
 
 # Ignore .fetch files in case you like to edit your project deps locally.
-.fetch
+impl/ex/**/.fetch
 
 # If the VM crashes, it generates a dump, let's ignore it too.
 erl_crash.dump
@@ -116,7 +116,7 @@ npm-debug.log
 # Since we are building assets from assets/,
 # we ignore priv/static. You may want to comment
 # this depending on your deployment strategy.
-priv/static/
+impl/ex/**/priv/static/
 
 # Files matching config/*.secret.exs pattern contain sensitive
 # data and you should not commit them into version control.
@@ -124,4 +124,9 @@ priv/static/
 # Alternatively, you may comment the line below and commit the
 # secrets files as long as you replace their contents by environment
 # variables.
-config/*.secret.exs
+impl/ex/**/config/*.secret.exs
+
+
+impl/ex/**/bench/
+
+
