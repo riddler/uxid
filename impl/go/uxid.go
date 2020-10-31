@@ -1,43 +1,147 @@
 package uxid
 
 import (
-	"errors"
-	"fmt"
-	"math"
-	"regexp"
-	"strings"
+	cryptorand "crypto/rand"
+	"io"
+	"time"
 )
 
 const CrockfordAlphabet string = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-const InvalidRegexp string = "[^0123456789ABCDEFGHJKMNPQRSTVWXYZ]"
 
-type UXID struct {
-  encoded string
-  time int
+func Generate(prefix string, rand_size int) (id_str string, err error) {
+	time_string := EncodeTime(time.Now().UTC())
+	rand_string := EncodeRand(rand_size)
+
+	if "" == prefix {
+		return time_string + rand_string, nil
+	}
+
+	return prefix + "_" + time_string + rand_string, nil
 }
 
-func Decode(input string) (id *UXID, err error) {
-	if len(input) == 0 {
-    return nil, errors.New("uxid: input is required")
-  }
+func EncodeTime(t time.Time) string {
+	ms := Timestamp(t)
 
-  matched, err := regexp.Match(InvalidRegexp, []byte(input))
-  if (matched) {
-    return nil, errors.New(fmt.Sprintf("uxid: expected input to be a Base32 encoded string, got: '%s'", input))
-  }
+	// Create the time bytes to store timestamp
+	tb := make([]byte, 6)
 
-  return &UXID{input, decodeTime(input)}, nil
+	tb[0] = byte(ms >> 40)
+	tb[1] = byte(ms >> 32)
+	tb[2] = byte(ms >> 24)
+	tb[3] = byte(ms >> 16)
+	tb[4] = byte(ms >> 8)
+	tb[5] = byte(ms)
+
+	// Now encode the bytes into a time string
+	ts := make([]byte, 10)
+	ts[0] = CrockfordAlphabet[(tb[0]&224)>>5]
+	ts[1] = CrockfordAlphabet[tb[0]&31]
+	ts[2] = CrockfordAlphabet[(tb[1]&248)>>3]
+	ts[3] = CrockfordAlphabet[((tb[1]&7)<<2)|((tb[2]&192)>>6)]
+	ts[4] = CrockfordAlphabet[(tb[2]&62)>>1]
+	ts[5] = CrockfordAlphabet[((tb[2]&1)<<4)|((tb[3]&240)>>4)]
+	ts[6] = CrockfordAlphabet[((tb[3]&15)<<1)|((tb[4]&128)>>7)]
+	ts[7] = CrockfordAlphabet[(tb[4]&124)>>2]
+	ts[8] = CrockfordAlphabet[((tb[4]&3)<<3)|((tb[5]&224)>>5)]
+	ts[9] = CrockfordAlphabet[tb[5]&31]
+
+	return string(ts[:])
 }
 
+func EncodeRand(rand_size int) string {
+	if rand_size <= 0 {
+		return ""
+	} else if rand_size > 10 {
+		rand_size = 10
+	}
 
-func decodeTime(input string) int {
-  decodedTime := 0
-  for i := 9; i >= 0; i = i-1 {
-    powerValue := int(math.Pow(32, float64(9-i)))
-    char := string(input[i])
-    alphabetIndex := strings.Index(CrockfordAlphabet, char)
-    decodedTime += powerValue * alphabetIndex
-  }
+	entropy := cryptorand.Reader
 
-  return decodedTime
+	// 16 possible characters
+	es := make([]byte, 16)
+
+	// Generate and store the entropy bytes
+	eb := make([]byte, rand_size)
+	_, _ = io.ReadFull(entropy, eb[:])
+
+	es[0] = CrockfordAlphabet[(eb[0]&248)>>3]
+
+	if rand_size == 1 {
+		es[1] = CrockfordAlphabet[((eb[0] & 7) << 2)]
+		return string(es[:2])
+	}
+
+	es[1] = CrockfordAlphabet[((eb[0]&7)<<2)|((eb[1]&192)>>6)]
+	es[2] = CrockfordAlphabet[(eb[1]&62)>>1]
+
+	if rand_size == 2 {
+		es[3] = CrockfordAlphabet[((eb[1] & 1) << 4)]
+		return string(es[:4])
+	}
+
+	es[3] = CrockfordAlphabet[((eb[1]&1)<<4)|((eb[2]&240)>>4)]
+
+	if rand_size == 3 {
+		es[4] = CrockfordAlphabet[((eb[2] & 15) << 1)]
+		return string(es[:5])
+	}
+
+	es[4] = CrockfordAlphabet[((eb[2]&15)<<1)|((eb[3]&128)>>7)]
+	es[5] = CrockfordAlphabet[(eb[3]&124)>>2]
+
+	if rand_size == 4 {
+		es[6] = CrockfordAlphabet[((eb[3] & 3) << 3)]
+		return string(es[:7])
+	}
+
+	es[6] = CrockfordAlphabet[((eb[3]&3)<<3)|((eb[4]&224)>>5)]
+	es[7] = CrockfordAlphabet[eb[4]&31]
+
+	if rand_size == 5 {
+		return string(es[:8])
+	}
+
+	es[8] = CrockfordAlphabet[(eb[5]&248)>>3]
+
+	if rand_size == 6 {
+		es[9] = CrockfordAlphabet[((eb[5] & 7) << 2)]
+		return string(es[:10])
+	}
+
+	es[9] = CrockfordAlphabet[((eb[5]&7)<<2)|((eb[6]&192)>>6)]
+	es[10] = CrockfordAlphabet[(eb[6]&62)>>1]
+
+	if rand_size == 7 {
+		es[11] = CrockfordAlphabet[((eb[6] & 1) << 4)]
+		return string(es[:12])
+	}
+
+	es[11] = CrockfordAlphabet[((eb[6]&1)<<4)|((eb[7]&240)>>4)]
+
+	if rand_size == 8 {
+		es[12] = CrockfordAlphabet[((eb[7] & 15) << 1)]
+		return string(es[:13])
+	}
+
+	es[12] = CrockfordAlphabet[((eb[7]&15)<<1)|((eb[8]&128)>>7)]
+	es[13] = CrockfordAlphabet[(eb[8]&124)>>2]
+
+	if rand_size == 9 {
+		es[14] = CrockfordAlphabet[((eb[8] & 3) << 3)]
+		return string(es[:3])
+	}
+
+	es[14] = CrockfordAlphabet[((eb[8]&3)<<3)|((eb[9]&224)>>5)]
+	es[15] = CrockfordAlphabet[eb[9]&31]
+
+	return string(es[:])
+}
+
+// Timestamp converts a time.Time to Unix milliseconds.
+//
+// Because of the way ULID stores time, times from the year
+// 10889 produces undefined results.
+func Timestamp(t time.Time) uint64 {
+	return uint64(t.Unix())*1000 +
+		uint64(t.Nanosecond()/int(time.Millisecond))
 }
