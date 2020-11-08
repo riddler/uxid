@@ -1,4 +1,5 @@
 require "uxid/model"
+require "uxid/encoder"
 require "uxid/version"
 
 module UXID
@@ -8,6 +9,10 @@ module UXID
   TIME_LEN = 10
 
   class Error < StandardError; end
+
+  def self.encode
+    Encoder.encode
+  end
   
   def self.decode value
     case value
