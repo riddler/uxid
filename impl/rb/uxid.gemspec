@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["JohnnyT"]
   spec.email         = ["ubergeek3141@gmail.com"]
 
-  spec.summary       = "User eXperience focused IDentifiers"
+  spec.summary       = "Generates IDs like: cus_01EPEY1JMKXVBT and txn_01EPEY2P06TR1RTV07XA82ZGJJ (similar to Stripe identifiers)."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/riddler/uxid"
   spec.license       = "MIT"
