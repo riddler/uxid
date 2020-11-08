@@ -1,15 +1,13 @@
-# frozen-string-literal: true
-
-if RUBY_VERSION >= "2.5"
-  require "securerandom"
-else
-  require "sysrandom/securerandom"
-end
-
+require "uxid/encoder"
 
 module UXID
   class Model
     attr_accessor :time, :time_encoded, :entropy, :entropy_encoded, :prefix, :size
+
+    def encode
+      encoder = ::UXID::Encoder.new self
+      encoder.encode
+    end
 
     # Returns time as 48 bits
     def time_bytes
@@ -30,23 +28,17 @@ module UXID
     end
 
     def encoded
-      time_encoded + entropy_encoded
+      id = time_encoded + entropy_encoded
+
+      if has_prefix?
+        [prefix, id].join UXID::DELIMITER
+      else
+        id
+      end
     end
 
-    # def initialize value
-    #   @encoded = value
-    #   decode_time
-    # end
-
-    # def decode_time
-    #   time_chars = @encoded[0...::UXID::TIME_LEN].split ""
-    #   reversed_chars_with_index = time_chars.reverse.each_with_index
-
-    #   @time = reversed_chars_with_index.reduce(0) do |acc, (char, power_index)|
-    #     power_value = 32.pow power_index
-    #     alphabet_index = ::UXID::CROCKFORD_ENCODING.index char
-    #     acc += power_value * alphabet_index
-    #   end
-    # end
+    def has_prefix?
+      !(prefix.nil? || prefix == "")
+    end
   end
 end

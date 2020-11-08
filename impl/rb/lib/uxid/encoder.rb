@@ -1,14 +1,10 @@
 module UXID
   class Encoder
-    def self.encode(size = 1)
-      model = ::UXID::Model.new
-      model.time = Time.now
-      model.size = size
-
+    def self.encode model
       new(model).encode
     end
 
-    def initialize(model)
+    def initialize model
       @model = model
     end
 
