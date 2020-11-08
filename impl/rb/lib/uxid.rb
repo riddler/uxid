@@ -10,8 +10,8 @@ module UXID
 
   class Error < StandardError; end
 
-  def self.encode
-    Encoder.encode
+  def self.encode attrs
+    Encoder.encode attrs
   end
   
   def self.decode value
