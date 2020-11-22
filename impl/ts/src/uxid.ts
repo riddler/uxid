@@ -1,47 +1,70 @@
-const CROCKFORD_ENCODING = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-const INVALID_REGEX = new RegExp(`[^${CROCKFORD_ENCODING}]`)
-const TIME_MAX = Math.pow(2, 48) - 1
-const TIME_LEN = 10
-
 class UXID {
-  encoded: string;
-  time: number;
+  encoded: string
+  prefix: string
+  randSize: number
+  randString: string
+  time: number
+  timeString: string
 
-  static decode(encoded: string): UXID {
-    if (!encoded || encoded === "") {
-      throw "input is required"
+  static generate(prefix?: string, size?: string): string {
+    let uxid = new UXID(prefix, size)
+    return uxid.encoded
+  }
+
+  constructor(prefix?: string, size?: string) {
+    this.prefix = prefix
+    this.time = (new Date).valueOf()
+
+    switch (size) {
+      case "xs":
+      case "xsmall":
+        this.randSize = 0;
+        break;
+
+      case "s":
+      case "small":
+        this.randSize = 2;
+        break;
+
+      case "m":
+      case "medium":
+        this.randSize = 5;
+        break;
+
+      case "l":
+      case "large":
+        this.randSize = 7;
+        break;
+
+      default:
+        this.randSize = 10;
     }
 
-    if (encoded.match(INVALID_REGEX)) {
-      throw `expected input to be a Base32 encoded string, got: '${encoded}'`
+    this.encode()
+  }
+
+  encode(): void {
+    this.encodeTime()
+    this.encodeRand()
+
+    let binString = this.timeString + this.randString
+
+    if (this.prefix) {
+      this.encoded = this.prefix + "_" + binString
+    } else {
+      this.encoded = binString
     }
-
-    let uxid = new UXID(encoded)
-    uxid.decode()
-    return uxid
   }
 
-  static generate(): string {
-    return "UXID"
+  encodeTime(): string {
+    this.timeString = "tttttttttt"
+    return this.timeString
   }
 
-  constructor(encoded?: string, time?: number) {
-    this.encoded = encoded
-    this.time = time
-  }
-
-  decode(): void {
-    this.decodeTime()
-  }
-
-  decodeTime(): void {
-    this.time = this.encoded
-      .substr(0, TIME_LEN)
-      .split("")
-      .reverse()
-      .reduce((carry, char, index) => {
-        return (carry += CROCKFORD_ENCODING.indexOf(char) * Math.pow(32, index))
-      }, 0)
+  encodeRand(): string {
+    let randString = "rrrrrrrrrrrrrrrr"
+    this.randString = randString.substr(0, this.randSize)
+    return this.randString
   }
 }
 
