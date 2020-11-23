@@ -7,7 +7,6 @@ test("UXID", () => {
 
 test("UXID.generate()", () => {
   const uxid = UXID.generate()
-  console.log(uxid)
 
   expect(uxid).not.toBeNull()
   expect(uxid.length).toBe(26)
@@ -15,12 +14,12 @@ test("UXID.generate()", () => {
 
 test("UXID.generate(\"cus\")", () => {
   const uxid = UXID.generate("cus")
-  console.log(uxid)
 
   expect(uxid).not.toBeNull()
   expect(uxid.length).toBe(30)
 })
 
+/*
 test("UXID.generate(\"cus\", \"xs\")", () => {
   const uxid = UXID.generate("cus", "xs")
   console.log(uxid)
@@ -36,3 +35,4 @@ test("UXID.generate(\"cus\", \"xl\")", () => {
   expect(uxid).not.toBeNull()
   expect(uxid.length).toBe(30)
 })
+*/
