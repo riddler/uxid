@@ -2,7 +2,7 @@ require "uxid/encoder"
 
 module UXID
   class Model
-    attr_accessor :time, :time_encoded, :entropy, :entropy_encoded, :prefix, :size
+    attr_accessor :time, :time_encoded, :entropy, :entropy_encoded, :prefix, :size, :rand_size
 
     def encode
       encoder = ::UXID::Encoder.new self
@@ -22,7 +22,7 @@ module UXID
     def entropy_bytes
       return @entropy_bytes if @entropy_bytes
 
-      bytes_string = SecureRandom.random_bytes @size
+      bytes_string = SecureRandom.random_bytes @rand_size
       @entropy_bytes = bytes_string.bytes
       return @entropy_bytes
     end
