@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    uxid (0.0.1)
+    uxid (0.2.0)
 
 GEM
   remote: https://rubygems.org/
