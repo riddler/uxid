@@ -1,3 +1,10 @@
+## Upcoming
+
+* Deprecates :size option with integers
+* Adds T-Shirt sizes (:size option)
+* Adds :rand_size option (:rand_size option)
+
+
 ## 0.1.0 / 2020-11-08
 
 * Adds basic UXID generation

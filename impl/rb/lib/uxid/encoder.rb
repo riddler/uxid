@@ -10,7 +10,7 @@ module UXID
 
     def encode
       @model.time_encoded = encode_time
-      @model.entropy_encoded = public_send "encode_entropy_#{@model.size}"
+      @model.entropy_encoded = public_send "encode_entropy_#{@model.rand_size}"
 
       @model.encoded
     end
@@ -22,17 +22,6 @@ module UXID
 
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)]
-    end
-
-    def encode_entropy_2
-      b0, b1 = @model.entropy_bytes
-
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
-      UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
-      UXID::CROCKFORD_ENCODING[((b1&1)<<4)]
     end
 
     def encode_entropy_2
