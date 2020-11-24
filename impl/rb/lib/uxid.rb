@@ -14,10 +14,10 @@ module UXID
   CROCKFORD_ENCODING = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
   DELIMITER = "_"
 
-  SIZE_WARNING_MESSAGE = <<~EOM
-    WARN: The UXID :size param is for Symbol T-Shirt sizes only.
-          Please use the :size param with Symbols (:xs, :s, :m, :l, :xl, or :xsmall, :small, :medium, :large, :xlarge),
-          or use the :rand_size param for specific size of random bytes.
+  SIZE_WARNING_MESSAGE = <<-EOM
+WARN: The UXID :size param is for Symbol T-Shirt sizes only.
+      Please use the :size param with Symbols (:xs, :s, :m, :l, :xl, or :xsmall, :small, :medium, :large, :xlarge),
+      or use the :rand_size param for specific size of random bytes.
   EOM
 
   class Error < StandardError; end
