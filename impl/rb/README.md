@@ -40,7 +40,7 @@ UXID.generate prefix: "cus", size: :small # "cus_01EQRH884AQYY1"
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'uxid'
+gem "uxid"
 ```
 
 And then execute:
