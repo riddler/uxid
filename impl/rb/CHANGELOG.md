@@ -1,5 +1,10 @@
 ### Upcoming
 
+* (Nothing yet)
+
+
+### 0.2.2 / 2020-11/25
+
 * Uses Ruby path for Gemspec homepage
 * Adds more tests around generation using size option
 
