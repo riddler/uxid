@@ -1,3 +1,9 @@
+### 0.2.1 / 2020-11-25
+
+* Removes extra chars from generation
+* Adds tests around generation of sizes
+
+
 ## 0.2.0 / 2020-11-24
 
 * Deprecates :size option with integers
