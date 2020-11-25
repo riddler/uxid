@@ -28,8 +28,6 @@ module UXID
       b0, b1 = @model.entropy_bytes
 
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b1&1)<<4)]
@@ -38,8 +36,6 @@ module UXID
     def encode_entropy_3
       b0, b1, b2 = @model.entropy_bytes
 
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
@@ -50,8 +46,6 @@ module UXID
     def encode_entropy_4
       b0, b1, b2, b3 = @model.entropy_bytes
 
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
@@ -65,8 +59,6 @@ module UXID
       b0, b1, b2, b3, b4 = @model.entropy_bytes
 
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b1&1)<<4)  | ((b2&240)>>4)] +
@@ -79,8 +71,6 @@ module UXID
     def encode_entropy_6
       b0, b1, b2, b3, b4, b5 = @model.entropy_bytes
 
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
@@ -96,8 +86,6 @@ module UXID
     def encode_entropy_7
       b0, b1, b2, b3, b4, b5, b6 = @model.entropy_bytes
 
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
@@ -115,8 +103,6 @@ module UXID
     def encode_entropy_8
       b0, b1, b2, b3, b4, b5, b6, b7 = @model.entropy_bytes
 
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
@@ -136,8 +122,6 @@ module UXID
       b0, b1, b2, b3, b4, b5, b6, b7, b8 = @model.entropy_bytes
 
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b1&1)<<4)  | ((b2&240)>>4)] +
@@ -149,7 +133,6 @@ module UXID
       UXID::CROCKFORD_ENCODING[((b5&7)<<2)  | ((b6&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b6&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b6&1)<<4)  | ((b7&240)>>4)] +
-      UXID::CROCKFORD_ENCODING[((b7&15)<<1)] +
       UXID::CROCKFORD_ENCODING[((b7&15)<<1) | ((b8&128)>>7)] +
       UXID::CROCKFORD_ENCODING[(b8&124)>>2] +
       UXID::CROCKFORD_ENCODING[((b8&3)<<3)]
@@ -159,8 +142,6 @@ module UXID
       b0, b1, b2, b3, b4, b5, b6, b7, b8, b9 = @model.entropy_bytes
 
       UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
-      UXID::CROCKFORD_ENCODING[((b0&7)<<2)] +
-      UXID::CROCKFORD_ENCODING[(b0&248)>>3] +
       UXID::CROCKFORD_ENCODING[((b0&7)<<2)  | ((b1&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b1&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b1&1)<<4)  | ((b2&240)>>4)] +
@@ -172,7 +153,6 @@ module UXID
       UXID::CROCKFORD_ENCODING[((b5&7)<<2)  | ((b6&192)>>6)] +
       UXID::CROCKFORD_ENCODING[(b6&62)>>1] +
       UXID::CROCKFORD_ENCODING[((b6&1)<<4)  | ((b7&240)>>4)] +
-      UXID::CROCKFORD_ENCODING[((b7&15)<<1)] +
       UXID::CROCKFORD_ENCODING[((b7&15)<<1) | ((b8&128)>>7)] +
       UXID::CROCKFORD_ENCODING[(b8&124)>>2] +
       UXID::CROCKFORD_ENCODING[((b8&3)<<3)  | ((b9&224)>>5)] +
