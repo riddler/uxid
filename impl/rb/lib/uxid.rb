@@ -32,11 +32,11 @@ WARN: The UXID :size param is for Symbol T-Shirt sizes only.
 
     model.time = attrs[:time] || Time.now
     model.prefix = attrs[:prefix] || ""
+    model.size = attrs[:size]
 
     if attrs[:rand_size]
       model.rand_size = attrs[:rand_size]
     else
-      model.size = attrs[:size]
       case model.size
       when Integer
         puts SIZE_WARNING_MESSAGE
@@ -61,7 +61,6 @@ WARN: The UXID :size param is for Symbol T-Shirt sizes only.
       else
         model.rand_size = 10
       end
-
     end
 
     model
