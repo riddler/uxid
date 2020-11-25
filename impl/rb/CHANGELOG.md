@@ -1,3 +1,9 @@
+### Upcoming
+
+* Uses Ruby path for Gemspec homepage
+* Adds more tests around generation using size option
+
+
 ### 0.2.1 / 2020-11-25
 
 * Removes extra chars from generation
