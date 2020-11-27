@@ -10,22 +10,46 @@
 *** for the actual URLs.
 *** See: https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Issues][issues_shield]][issues_url]
-[![MIT License][license_shield]][license_url]
+# UXID [![Issues][issues_shield]][issues_url] [![MIT License][license_shield]][license_url]
+
+This project contains the specification and reference implementations of a type of unique identifier called a UXID.
+
+UXID stands for **U**ser e**X**perience focused **ID**entifier and is similar to a [ULID][ulid_url], with a strong focus on UX.
+
+## Why UXIDs?
+
+ID generation is a fun topic (for some :) and there are many existing libraries to do so (see [Alternatives]).
+ID generation is a fun topic (for some :) and there are many existing libraries to do so (see [Alternatives](#alternatives)).
+UXIDs build on strong concepts from some of these alternatives and have these primary goals:
+
+  * User experience focused
+  * No coordination, no collisions, no (fixed) cardinality
+  * Sortable by time
+
+### User Experience Focused
+
+Most ID generation libraries focus on creating unique identifiers to work for the system (often distributed) and give little thought to the humans who use them.
+
+Who are these humans you speak of? There are two large groups:
+
+* The customer and tech support heros who need to easily pronounce and hear them over the phone.
+* The engineers investigating a complex issue with multiple objects of different types.
+
 
 <!-- PROJECT LOGO -->
+<!--
 <br />
 <p align="center">
   <h1 align="center">UXID</h1>
 
   <p align="center">
-    User Experience focused Identifiers
+    <b>U</b>ser e<b>X</b>perience focused <b>ID</b>entifiers
     <br />
     <br />
     <a href="https://github.com/riddler/uxid/issues">Report Bug / Request Feature</a>
   </p>
 </p>
-
+-->
 
 
 <!-- TABLE OF CONTENTS -->
@@ -118,8 +142,12 @@
 <!-- ALTERNATIVES -->
 ## Alternatives
 
-  * [ULID][ulid_url] Universally Unique Lexicographically Sortable Identifier.
-
+  * [Auth0 id-generator][auth0_id_generator_url]: Generates random ids with a prefix (a la Stripe).
+  * [CID][cid_url]: Content ID - a human-friendly unique ID function built for use with mobile-first/distributed apps.
+  * [GlobalID][global_id_url]: Reference models by URI - an app wide URI that uniquely identifies a model instance.
+  * [KUSID][ksuid_url]: K-Sortable Unique IDentifier.
+  * [ULID][ulid_url]: Universally Unique Lexicographically Sortable Identifier.
+  * [XID][xid_url]: Globally Unique ID Generator based on the Mongo Object ID algorithm.
 
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -140,7 +168,12 @@
 
 [contribution_guidelines]: https://github.com/riddler/.github/blob/master/CONTRIBUTING.md
 
+[auth0_id_generator_url]: https://github.com/auth0/id-generator
+[cid_url]: https://github.com/dwyl/cid
+[global_id_url]: https://github.com/rails/globalid
+[ksuid_url]: https://github.com/segmentio/ksuid
 [ulid_url]: https://github.com/ulid/spec
+[xid_url]: https://github.com/rs/xid
 
 [top_ten_reasons_url]: https://changelog.com/posts/top-ten-reasons-why-i-wont-use-your-open-source-project
 [readme_template_url]: https://github.com/othneildrew/Best-README-Template
